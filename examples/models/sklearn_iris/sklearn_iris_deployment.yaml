@@ -1,9 +1,10 @@
 apiVersion: machinelearning.seldon.io/v1alpha2
 kind: SeldonDeployment
 metadata:
-  name: seldon-deployment-example
+  name: seldon-deployment-example-v1
 spec:
-  name: sklearn-iris-deployment
+  # protocol: v2
+  name: sklearn-iris-deployment-v1
   predictors:
   - componentSpecs:
     - spec:
