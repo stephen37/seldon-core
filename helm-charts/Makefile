@@ -2,7 +2,7 @@ CHARTS=seldon-core-analytics seldon-core-loadtesting seldon-single-model seldon-
 
 
 build_all:
-	make clean package get_index update_index
+	make clean package get_index 
 
 push_all:
 	gsutil cp build/index.yaml build/*.tgz gs://seldon-charts/

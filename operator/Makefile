@@ -144,7 +144,8 @@ create-client: test
 	./hack/update-codegen.sh
 
 # Build the docker image
-docker-build: test generate-resources
+docker-build: test
+# docker-build: test generate-resources
 	docker build . -t ${IMG}
 
 # Build the docker image without testing

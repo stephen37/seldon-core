@@ -48,10 +48,10 @@ executor:
   port: 8000
   metricsPortName: metrics
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     registry: docker.io
-    repository: seldonio/seldon-core-executor
-    tag: 1.15.0-dev
+    repository: seldon-core-executor
+    tag: 1.15.1-dev
   resources:
     cpuLimit: 500m
     cpuRequest: 500m
@@ -74,10 +74,10 @@ executor:
 
 # ## Seldon Core Controller Manager Options
 image:
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   registry: docker.io
-  repository: seldonio/seldon-core-operator
-  tag: 1.15.0-dev
+  repository: seldon-core-operator
+  tag: 1.15.1-dev
 manager:
   cpuLimit: 500m
   cpuRequest: 100m

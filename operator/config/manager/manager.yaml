@@ -3,13 +3,13 @@ kind: Namespace
 metadata:
   labels:
     control-plane: seldon-controller-manager
-  name: system
+  name: seldon-system
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: controller-manager
-  namespace: system
+  namespace: seldon-system
   labels:
     control-plane: seldon-controller-manager
 spec:
@@ -94,9 +94,9 @@ spec:
         - name: USE_EXECUTOR
           value: "true"
         - name: EXECUTOR_CONTAINER_IMAGE_AND_VERSION
-          value: seldonio/seldon-core-executor:1.15.0-dev
+          value: seldon-core-executor:1.15.1-dev
         - name: EXECUTOR_CONTAINER_IMAGE_PULL_POLICY
-          value: IfNotPresent
+          value: Always
         - name: EXECUTOR_PROMETHEUS_PATH
           value: "/prometheus"
         - name: EXECUTOR_SERVER_PORT

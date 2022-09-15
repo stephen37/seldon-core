@@ -8,8 +8,9 @@ import (
 	"net/http"
 	"net/url"
 
-	http2 "github.com/cloudevents/sdk-go/pkg/bindings/http"
 	"time"
+
+	http2 "github.com/cloudevents/sdk-go/pkg/bindings/http"
 
 	"github.com/go-logr/logr"
 	"github.com/gorilla/mux"
@@ -188,6 +189,8 @@ func (r *SeldonRestApi) Initialise() {
 			r.Router.NewRoute().Path("/v2/models/{"+ModelHttpPathVariable+"}").Methods("GET", "OPTIONS").HandlerFunc(r.wrapMetrics(metric.MetadataHttpServiceName, r.metadata))
 			// Health
 			r.Router.NewRoute().Path("/v2/health/ready").Methods("GET", "OPTIONS").HandlerFunc(r.wrapMetrics(metric.StatusHttpServiceName, r.checkReady))
+			// Documentation for v2 API
+			r.Router.NewRoute().PathPrefix("/v2/docs/").Handler(http.StripPrefix("/v2/docs/", http.FileServer(http.Dir("./openapi/"))))
 
 		}
 	}
